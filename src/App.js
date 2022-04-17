@@ -1,9 +1,12 @@
 import './App.css';
+import Header from './Header';
+import Banner from './pages/Banner/Banner';
 
 function App() {
   return (
     <div>
-      <h1 className='text-4xl'>hello </h1>
+      <Header />
+      <Banner />
     </div>
   );
 }
