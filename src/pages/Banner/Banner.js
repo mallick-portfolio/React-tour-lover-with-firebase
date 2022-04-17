@@ -1,44 +1,33 @@
 import React from "react";
 import { Carousel } from "react-bootstrap";
+import tour1 from "../../images/tour1.jpg";
+import tour2 from "../../images/tour2.jpg";
+import tour3 from "../../images/tour3.jpg";
 
 const Banner = () => {
   return (
     <Carousel>
       <Carousel.Item>
-        <img
-          className="d-block w-100"
-          src="holder.js/800x400?text=First slide&bg=373940"
-          alt="First slide"
-        />
+        <img className="d-block w-100" src={tour1} alt="First slide" />
         <Carousel.Caption>
-          <h3>First slide label</h3>
-          <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+          <h3>Travel To The World</h3>
+          <p>Discover the hidden beauty from top to bottom</p>
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item>
-        <img
-          className="d-block w-100"
-          src="holder.js/800x400?text=Second slide&bg=282c34"
-          alt="Second slide"
-        />
+        <img className="d-block w-100" src={tour2} alt="Second slide" />
 
         <Carousel.Caption>
-          <h3>Second slide label</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          <h3>Book the Perfect Trip</h3>
+          <p>Search Over 100+ Airlines and More Then 450+ hotels.</p>
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item>
-        <img
-          className="d-block w-100"
-          src="holder.js/800x400?text=Third slide&bg=20232a"
-          alt="Third slide"
-        />
+        <img className="d-block w-100" src={tour3} alt="Third slide" />
 
         <Carousel.Caption>
-          <h3>Third slide label</h3>
-          <p>
-            Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-          </p>
+          <h3>Vacation Packages</h3>
+          <p>Find out the best deals and books yours today.</p>
         </Carousel.Caption>
       </Carousel.Item>
     </Carousel>
