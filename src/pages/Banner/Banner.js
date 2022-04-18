@@ -10,24 +10,24 @@ const Banner = () => {
       <Carousel.Item>
         <img className="d-block w-100 bannerImg" src={tour1} alt="First slide" />
         <Carousel.Caption>
-          <h3>Travel To The World</h3>
-          <p>Discover the hidden beauty from top to bottom</p>
+          <h3 className="text-dark fs-1">Travel To The World</h3>
+          <p className="text-dark">Discover the hidden beauty from top to bottom</p>
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item>
         <img className="d-block w-100 bannerImg" src={tour2} alt="Second slide" />
 
         <Carousel.Caption>
-          <h3>Book the Perfect Trip</h3>
-          <p>Search Over 100+ Airlines and More Then 450+ hotels.</p>
+          <h3 className="text-dark fs-1">Book the Perfect Trip</h3>
+          <p className="text-dark">Search Over 100+ Airlines and More Then 450+ hotels.</p>
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item>
         <img className="d-block w-100 bannerImg" src={tour3} alt="Third slide" />
 
         <Carousel.Caption>
-          <h3>Vacation Packages</h3>
-          <p>Find out the best deals and books yours today.</p>
+          <h3 className="text-dark fs-1">Vacation Packages</h3>
+          <p className="text-dark">Find out the best deals and books yours today.</p>
         </Carousel.Caption>
       </Carousel.Item>
     </Carousel>
