@@ -35,6 +35,11 @@ const Header = () => {
                 Services
               </Link>
             </li>
+            <li className="nav-item mx-2 text-uppercase">
+              <Link className="nav-link active" aria-current="page" to={"/blogs"}>
+                Blogs
+              </Link>
+            </li>
             {user ? (
               <li className="nav-item mx-2 text-uppercase">
                 <button onClick={()=>signOut(auth)} className="nav-link btn btn-outline-info">Sign Out</button>
