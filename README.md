@@ -1,6 +1,6 @@
 # Tour Lover Pro
 
-This is my project live link [MY DOCTOR](https://my-doctor-8532c.web.app/).
+This is my project live link [Tour Lover Pro](https://tour-firebase-auth.web.app/).
 
 ## General Info
 

@@ -21,16 +21,17 @@ const SocialLogin = () => {
   
     let from = location.state?.from?.pathname || "/";
     
-    if (googleError || githubError || facebookError) {
-      return toast('Your Login Failed. Please try login again')
-    }
+    
     if (googleLoading || githubLoading || facebookLoading) {
       return <Loading />
     }
     if (googleUser || githubUser || facebookUser) {
       navigate(from, { replace: true })
     }
-
+    let getError = ""
+    if (googleError || githubError || facebookError) {
+      getError = "login failed. Please try again"
+    }
   return (
     <div className="text-center">
       <ToastContainer />
@@ -54,6 +55,7 @@ const SocialLogin = () => {
       >
         <i className="fab fa-github"></i>
       </button>
+      <h4 className="text-center text-danger">{getError}</h4>
     </div>
   );
 };
