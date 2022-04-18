@@ -3,8 +3,10 @@ import {
   useSignInWithEmailAndPassword,
   useSignInWithGithub,
   useSignInWithGoogle,
+  useSendPasswordResetEmail,
 } from "react-firebase-hooks/auth";
-import { useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { toast, ToastContainer } from "react-toastify";
 import auth from "../../firebase.init";
 const initialValue = {
   email: "",
@@ -18,6 +20,8 @@ const Login = () => {
   const [signInWithGithub] = useSignInWithGithub(auth);
   const [userData, setUserData] = useState(initialValue);
   const { email, password } = userData;
+  const [sendPasswordResetEmail, sending, error] =
+    useSendPasswordResetEmail(auth);
   let location = useLocation();
   const navigate = useNavigate();
 
@@ -29,6 +33,23 @@ const Login = () => {
   const handleChange = (e) => {
     setUserData({ ...userData, [e.target.name]: e.target.value });
   };
+  const handleGoogleLogin = () => {
+    signInWithGoogle();
+    navigate("/");
+  };
+  const handleGithubLogin = () => {
+    signInWithGithub();
+    navigate("/");
+  };
+  const handleForgotPassword = async () => {
+    if(!email){
+      toast('Please give your email first')
+      return;
+    }
+      await sendPasswordResetEmail(email);
+      toast("Sent email");
+  }
+  
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -36,6 +57,7 @@ const Login = () => {
   };
   return (
     <div className="container my-4">
+      <ToastContainer />
       <div className="row justify-content-center">
         <div className="col-md-6">
           <form onSubmit={handleSubmit}>
@@ -69,7 +91,11 @@ const Login = () => {
 
             <div className="row mb-4">
               <div className="col">
-                <a href="#!">Forgot password?</a>
+                <button className="btn"
+                  onClick={handleForgotPassword}
+                >
+                  Reset password
+                </button>
               </div>
             </div>
             <button type="submit" className="btn btn-primary btn-block mb-4">
@@ -77,7 +103,7 @@ const Login = () => {
             </button>
             <div className="text-center">
               <p>
-                Not a member? <a href="#!">Register</a>
+                Not a member? <Link to={'/register'}>Register</Link>
               </p>
               <p>or sign up with:</p>
               <button type="button" className="btn btn-link btn-floating mx-1">
@@ -85,13 +111,17 @@ const Login = () => {
               </button>
 
               <button
-                onClick={() => signInWithGoogle()}
+                onClick={handleGoogleLogin}
                 type="button"
                 className="btn btn-link btn-floating mx-1"
               >
                 <i className="fab fa-google"></i>
               </button>
-              <button onClick={()=>signInWithGithub()} type="button" className="btn btn-link btn-floating mx-1">
+              <button
+                onClick={handleGithubLogin}
+                type="button"
+                className="btn btn-link btn-floating mx-1"
+              >
                 <i className="fab fa-github"></i>
               </button>
             </div>
