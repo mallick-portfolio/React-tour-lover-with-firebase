@@ -5,7 +5,7 @@ import {
   useSignInWithGoogle,
   useSendPasswordResetEmail,
 } from "react-firebase-hooks/auth";
-import {  useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import auth from "../../firebase.init";
 import SocialLogin from "../Shared/SocialLogin/SocialLogin";
@@ -25,12 +25,11 @@ const Login = () => {
   const navigate = useNavigate();
 
   let from = location.state?.from?.pathname || "/";
-  
 
   const handleChange = (e) => {
     setUserData({ ...userData, [e.target.name]: e.target.value });
   };
-  
+
   const handleForgotPassword = async () => {
     if (!email) {
       toast("Please give your email first");
@@ -80,11 +79,17 @@ const Login = () => {
               />
             </div>
 
-            <div className="row mb-4">
-              <div className="col">
-                <button className="btn text-primary underline" onClick={handleForgotPassword}>
+            <div className="row mb-2">
+              <div className="flex">
+                <button
+                  className="btn text-primary underline"
+                  onClick={handleForgotPassword}
+                >
                   Reset password
                 </button>
+                <Link to={"/register"} className="btn text-primary underline">
+                  Create New Account
+                </Link>
               </div>
             </div>
             <button type="submit" className="btn btn-primary btn-block mb-4">
