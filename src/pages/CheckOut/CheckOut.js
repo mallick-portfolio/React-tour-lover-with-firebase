@@ -8,7 +8,7 @@ const CheckOut = () => {
   
   const {id} = useParams();
   useEffect(()=>{
-    const selectitem = services.find(s => s.id == id)
+    const selectitem = services.find(s => s.id === parseInt(id))
     setItem(selectitem)
     
   }, [id, services])

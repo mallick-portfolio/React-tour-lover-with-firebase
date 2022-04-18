@@ -5,9 +5,9 @@ import auth from "./firebase.init";
 import {  signOut } from 'firebase/auth';
 
 const Header = () => {
-  const [user, loading, error] = useAuthState(auth);
+  const [user] = useAuthState(auth);
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light">
+    <nav className="navbar navbar-expand-lg py-3">
       <div className="container">
         <Link className="navbar-brand" to={"/"}>
           Tour Lover Pro
@@ -25,23 +25,28 @@ const Header = () => {
         </button>
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
-            <li className="nav-item">
+            <li className="nav-item mx-2 text-uppercase">
               <Link className="nav-link active" aria-current="page" to={"/"}>
                 Home
               </Link>
             </li>
+            <li className="nav-item mx-2 text-uppercase">
+              <Link className="nav-link active" aria-current="page" to={"/services"}>
+                Services
+              </Link>
+            </li>
             {user ? (
-              <li className="nav-item">
+              <li className="nav-item mx-2 text-uppercase">
                 <button onClick={()=>signOut(auth)} className="nav-link btn btn-outline-info">Sign Out</button>
               </li>
             ) : (
               <>
-                <li className="nav-item">
+                <li className="nav-item mx-2 text-uppercase">
                   <Link className="nav-link" to={"/register"}>
                     Register
                   </Link>
                 </li>
-                <li className="nav-item">
+                <li className="nav-item mx-2 text-uppercase">
                   <Link className="nav-link" to={"/login"}>
                     Login
                   </Link>

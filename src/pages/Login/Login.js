@@ -14,14 +14,15 @@ const Login = () => {
   const [
     signInWithEmailAndPassword,
     user,
-    loading,
-    error,
   ] = useSignInWithEmailAndPassword(auth);
   const [userData, setUserData] = useState(initialValue);
   const { email, password } = userData;
   let location = useLocation();
 
   let from = location.state?.from?.pathname || "/";
+  if(user){
+    navigate(from, { replace: true });
+  }
 
   const handleChange = (e) => {
     setUserData({ ...userData, [e.target.name]: e.target.value });
@@ -31,7 +32,7 @@ const Login = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     signInWithEmailAndPassword(email, password)
-    navigate(from, { replace: true });
+    
   };
   return (
     <div className="container my-4">
