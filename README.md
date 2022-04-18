@@ -17,9 +17,9 @@ A list of technologies used within the project:
 
  ## Features 
 
-* This is a doctor website.who can provide many services for patient
-* This is a simple doctor website .Patient can booked any service in this site easily .
-* This site is secure ! that's why Patient or Customer can booked any service without information lost.
+* This is a torist service providing website.who can provide many services for tour lover.
+* This website is simple to access.Tourist can booked any service in this site easily .
+* This site is secure ! that's why tourist or Customer can booked any service without information lost.
 * This site's  also design and develop for disability's man.
-* We provide best service for patient.
+* We provide best service for tourist lover.
 Tour Lover Pro

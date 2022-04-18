@@ -5,6 +5,7 @@ import { toast, ToastContainer } from "react-toastify";
 import auth from "../../firebase.init";
 import SocialLogin from "../Shared/SocialLogin/SocialLogin";
 import { Form } from "react-bootstrap";
+import { Link } from "react-router-dom";
 const initialValue = {
   name: "",
   email: "",
@@ -121,9 +122,10 @@ const Register = () => {
                     onChange={(e) => setCheck(e.target.checked)}
                     type="switch"
                     id="custom-switch"
-                    label="Check this switch"
+                    label="Are you want to register?"
                   />
                 </div>
+                <p className="text-center text-primary"><Link to={"/login"}>Already Have an Account</Link></p>
 
                 <button disabled={!check} type="submit" className="btn btn-primary btn-lg mb-1">
                   Submit
