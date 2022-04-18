@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 const useServices = () => {
   const [services, setServices] = useState([]);
   useEffect(() => {
-    fetch("services.json")
+    fetch("https://mallick-portfolio.github.io/api/services.json")
       .then((res) => res.json())
       .then((data) => setServices(data));
   }, []);

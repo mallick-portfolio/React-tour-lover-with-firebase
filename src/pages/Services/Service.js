@@ -1,11 +1,11 @@
 import React from "react";
-
+import { Link } from "react-router-dom";
 const Service = ({ service }) => {
-  const { title, image, description } = service;
+  const { id,title, image, description, price } = service;
   return (
     <div className="col">
-      <div className="card h-100">
-        <img src={image} className="card-img-top" alt="..." />
+      <div className="card serviceCard h-100">
+        <img src={image} className="card-img-top serviceImg" alt={title} />
         <div className="card-body">
           <h5 className="card-title">{title}</h5>
           <p title={description} className="card-text">
@@ -14,6 +14,8 @@ const Service = ({ service }) => {
               : description.slice(0, 250)}
             ...
           </p>
+         <h4>${price}</h4>
+         <Link to={`/checkout/${id}`} className="btn btn-info">Check Out</Link>
         </div>
       </div>
     </div>

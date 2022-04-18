@@ -16,6 +16,7 @@ const Register = () => {
 
   const [userData, setUserData] = useState(initialValue);
   const { name, email, password, confirmPassword } = userData;
+  
   const handleChange = (e) => {
     setUserData({ ...userData, [e.target.name]: e.target.value });
   };
