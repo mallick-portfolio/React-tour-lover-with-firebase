@@ -1,5 +1,6 @@
 import React from "react";
 import {
+  useSignInWithFacebook,
   useSignInWithGithub,
   useSignInWithGoogle,
 } from "react-firebase-hooks/auth";
@@ -13,18 +14,20 @@ const SocialLogin = () => {
     useSignInWithGoogle(auth);
   const [signInWithGithub, githubUser, githubLoading, githubError] =
     useSignInWithGithub(auth);
+    const [signInWithFacebook, facebookUser, facebookLoading, facebookError] = useSignInWithFacebook(auth);
+
     const navigate = useNavigate()
     let location = useLocation();
   
     let from = location.state?.from?.pathname || "/";
     
-    if (googleError || githubError) {
+    if (googleError || githubError || facebookError) {
       return toast('Your Login Failed. Please try login again')
     }
-    if (googleLoading || githubLoading) {
+    if (googleLoading || githubLoading || facebookLoading) {
       return <Loading />
     }
-    if (googleUser || githubUser) {
+    if (googleUser || githubUser || facebookUser) {
       navigate(from, { replace: true })
     }
 
@@ -33,7 +36,7 @@ const SocialLogin = () => {
       <ToastContainer />
       
       <p>or sign up with:</p>
-      <button type="button" className="btn btn-link btn-floating mx-1">
+      <button onClick={()=>signInWithFacebook()} type="button" className="btn btn-link btn-floating mx-1">
         <i className="fab fa-facebook-f"></i>
       </button>
 
