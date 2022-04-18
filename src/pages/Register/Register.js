@@ -11,7 +11,7 @@ const initialValue = {
 };
 
 const Register = () => {
-  const [createUserWithEmailAndPassword, user, loading, error] =
+  const [createUserWithEmailAndPassword, error] =
     useCreateUserWithEmailAndPassword(auth, {sendEmailVerification: true});
 
   const [userData, setUserData] = useState(initialValue);

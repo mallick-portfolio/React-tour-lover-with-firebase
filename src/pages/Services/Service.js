@@ -2,7 +2,6 @@ import React from "react";
 
 const Service = ({ service }) => {
   const { title, image, description } = service;
-  console.log(service);
   return (
     <div className="col">
       <div className="card h-100">
