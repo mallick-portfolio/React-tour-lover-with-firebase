@@ -1,5 +1,9 @@
 import React, { useState } from "react";
-import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import {
+  useSignInWithEmailAndPassword,
+  useSignInWithGithub,
+  useSignInWithGoogle,
+} from "react-firebase-hooks/auth";
 import { useLocation, useNavigate } from "react-router-dom";
 import auth from "../../firebase.init";
 const initialValue = {
@@ -7,32 +11,28 @@ const initialValue = {
   password: "",
 };
 
-
-
 const Login = () => {
-  const navigate = useNavigate()
-  const [
-    signInWithEmailAndPassword,
-    user,
-  ] = useSignInWithEmailAndPassword(auth);
+  const [signInWithEmailAndPassword, user] =
+    useSignInWithEmailAndPassword(auth);
+  const [signInWithGoogle] = useSignInWithGoogle(auth);
+  const [signInWithGithub] = useSignInWithGithub(auth);
   const [userData, setUserData] = useState(initialValue);
   const { email, password } = userData;
   let location = useLocation();
+  const navigate = useNavigate();
 
   let from = location.state?.from?.pathname || "/";
-  if(user){
+  if (user) {
     navigate(from, { replace: true });
   }
 
   const handleChange = (e) => {
     setUserData({ ...userData, [e.target.name]: e.target.value });
-    
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    signInWithEmailAndPassword(email, password)
-    
+    signInWithEmailAndPassword(email, password);
   };
   return (
     <div className="container my-4">
@@ -84,13 +84,17 @@ const Login = () => {
                 <i className="fab fa-facebook-f"></i>
               </button>
 
-              <button type="button" className="btn btn-link btn-floating mx-1">
+              <button
+                onClick={() => signInWithGoogle()}
+                type="button"
+                className="btn btn-link btn-floating mx-1"
+              >
                 <i className="fab fa-google"></i>
               </button>
               <button type="button" className="btn btn-link btn-floating mx-1">
                 <i className="fab fa-twitter"></i>
               </button>
-              <button type="button" className="btn btn-link btn-floating mx-1">
+              <button onClick={()=>signInWithGithub()} type="button" className="btn btn-link btn-floating mx-1">
                 <i className="fab fa-github"></i>
               </button>
             </div>
