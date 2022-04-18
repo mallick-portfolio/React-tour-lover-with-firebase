@@ -1,0 +1,23 @@
+.bannerImg {
+  height: 350px;
+}
+@media (min-width: 576px) {
+  .bannerImg {
+    height: 380px;
+  }
+}
+@media (min-width: 768px) {
+  .bannerImg {
+    height: 420px;
+  }
+}
+@media (min-width: 992px) {
+  .bannerImg {
+    height: 480px;
+  }
+}
+@media (min-width: 1200px) {
+  .bannerImg {
+    height: 550px;
+  }
+}

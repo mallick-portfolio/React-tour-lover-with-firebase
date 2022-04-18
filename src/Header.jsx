@@ -2,7 +2,7 @@ import React from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { Link } from "react-router-dom";
 import auth from "./firebase.init";
-import {  signOut } from 'firebase/auth';
+import { signOut } from "firebase/auth";
 
 const Header = () => {
   const [user] = useAuthState(auth);
@@ -31,18 +31,40 @@ const Header = () => {
               </Link>
             </li>
             <li className="nav-item mx-2 text-uppercase">
-              <Link className="nav-link active" aria-current="page" to={"/services"}>
+              <Link
+                className="nav-link active"
+                aria-current="page"
+                to={"/services"}
+              >
                 Services
               </Link>
             </li>
             <li className="nav-item mx-2 text-uppercase">
-              <Link className="nav-link active" aria-current="page" to={"/blogs"}>
+              <Link
+                className="nav-link active"
+                aria-current="page"
+                to={"/blogs"}
+              >
                 Blogs
+              </Link>
+            </li>
+            <li className="nav-item mx-2 text-uppercase">
+              <Link
+                className="nav-link active"
+                aria-current="page"
+                to={"/about"}
+              >
+                About
               </Link>
             </li>
             {user ? (
               <li className="nav-item mx-2 text-uppercase">
-                <button onClick={()=>signOut(auth)} className="nav-link btn btn-outline-info">Sign Out</button>
+                <button
+                  onClick={() => signOut(auth)}
+                  className="nav-link btn btn-outline-info"
+                >
+                  Sign Out
+                </button>
               </li>
             ) : (
               <>
@@ -56,7 +78,6 @@ const Header = () => {
                     Login
                   </Link>
                 </li>
-                
               </>
             )}
           </ul>
