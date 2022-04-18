@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import "react-toastify/dist/ReactToastify.css";
-import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
 import { toast, ToastContainer } from "react-toastify";
 import auth from "../../firebase.init";
+import SocialLogin from "../Shared/SocialLogin/SocialLogin";
+import { Form } from "react-bootstrap";
 const initialValue = {
   name: "",
   email: "",
@@ -12,17 +14,15 @@ const initialValue = {
 
 const Register = () => {
   const [createUserWithEmailAndPassword, error] =
-    useCreateUserWithEmailAndPassword(auth, {sendEmailVerification: true});
+    useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
 
   const [userData, setUserData] = useState(initialValue);
+  const [check, setCheck] = useState(false);
   const { name, email, password, confirmPassword } = userData;
-  
+
   const handleChange = (e) => {
     setUserData({ ...userData, [e.target.name]: e.target.value });
   };
-
- 
-  
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -34,11 +34,11 @@ const Register = () => {
       toast("your password doesn't match");
       return;
     }
-    if(error){
-      toast('Your email is already exist')
+    if (error) {
+      toast("Your email is already exist");
     }
-    
-    createUserWithEmailAndPassword(email, password)
+
+    createUserWithEmailAndPassword(email, password);
   };
 
   return (
@@ -116,10 +116,19 @@ const Register = () => {
                     placeholder="Re Type your Password"
                   />
                 </div>
+                <div className="form-outline my-4">
+                  <Form.Check
+                    onChange={(e) => setCheck(e.target.checked)}
+                    type="switch"
+                    id="custom-switch"
+                    label="Check this switch"
+                  />
+                </div>
 
-                <button type="submit" className="btn btn-success btn-lg mb-1">
+                <button disabled={!check} type="submit" className="btn btn-primary btn-lg mb-1">
                   Submit
                 </button>
+                <SocialLogin />
               </form>
             </div>
           </div>
